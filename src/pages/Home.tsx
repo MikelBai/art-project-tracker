@@ -1,7 +1,13 @@
-import React from "react";
+import React from 'react';
+import ProjectList from '../components/ProjectList';
 
-function Home() {
-    return <h1>Home Page</h1>
-}
+const Home = () => {
+  return (
+    <div>
+      <h1>Home</h1>
+      <ProjectList />
+    </div>
+  );
+};
 
-export default Home
+export default Home;
