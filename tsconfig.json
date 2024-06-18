@@ -24,6 +24,6 @@
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": true
   },
-  "include": ["src", "server"],
+  "include": ["src", "server.mjs"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

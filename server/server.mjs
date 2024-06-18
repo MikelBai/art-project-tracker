@@ -2,21 +2,18 @@ import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
-import { ConnectOptions } from 'mongoose';
-import projectRoutes from './routes/projectRoutes';
-
+import projectRoutes from './routes/projectRoutes.mjs';
 
 const app = express();
 const PORT = 5000;
+
 app.use(cors());
 app.use(bodyParser.json());
 app.use('/api/projects', projectRoutes);
 
-
 mongoose.connect('mongodb://localhost:27017/mydatabase', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-} as ConnectOptions).then(() => {
 }).then(() => {
     console.log('Connected to MongoDB');
 }).catch((error) => {
