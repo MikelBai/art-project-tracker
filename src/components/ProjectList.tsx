@@ -1,23 +1,38 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
+interface Project {
+    _id: string;
+    title: string;
+    description: string;
+    status: string;
+  }
+
 const ProjectList = () => {
-    const [projects, setProjects] = useState([])
+    const [projects, setProjects] = useState<Project[]>([]);
     useEffect(() => {
-        axios.get('/api/projects')
-            .then(response => { setProjects(response.data)})
-            .catch(error => console.error('Error fetching projects:', error))
-    }, [])
-    return (
+        const fetchProjects = async () => {
+          try {
+            const response = await axios.get('/api/projects');
+            setProjects(response.data);
+          } catch (error) {
+            console.error(error);
+          }
+        };
+    
+        fetchProjects();
+      }, []);
+      return (
         <div>
-            <h1>Projects</h1>
-            <ul>
-                {projects.map((project: { name: string }, projectIndex: number) => (
-                    <li key={projectIndex}>{project.name}</li>
-                ))}
-            </ul>
+          {projects.map((project) => (
+            <div key={project._id}>
+              <h3>{project.title}</h3>
+              <p>{project.description}</p>
+              <p>Status: {project.status}</p>
+            </div>
+          ))}
         </div>
-    )
+      );
 }
 
 export default ProjectList
