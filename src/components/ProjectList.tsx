@@ -56,63 +56,86 @@ const ProjectList = () => {
   };
 
   return (
-    <div>
-      <h2>Project List</h2>
-      <div>
-        <h3>Create New Project</h3>
+    <div className="container mx-auto p-4">
+      <h2 className="text-2xl font-bold mb-4">Project List</h2>
+      <div className="mb-6">
+        <h3 className="text-xl font-semibold mb-2">Create New Project</h3>
         <input
           type="text"
           placeholder="Title"
           value={newProject.title}
           onChange={(e) => setNewProject({ ...newProject, title: e.target.value })}
+          className="border p-2 mb-2 w-full"
         />
         <input
           type="text"
           placeholder="Description"
           value={newProject.description}
           onChange={(e) => setNewProject({ ...newProject, description: e.target.value })}
+          className="border p-2 mb-2 w-full"
         />
         <input
           type="text"
           placeholder="Status"
           value={newProject.status}
           onChange={(e) => setNewProject({ ...newProject, status: e.target.value })}
+          className="border p-2 mb-2 w-full"
         />
-        <button onClick={handleCreateProject}>Create</button>
+        <button onClick={handleCreateProject} className="bg-blue-500 text-white p-2 rounded">
+          Create
+        </button>
       </div>
       <div>
         {projects.map((project) => (
-          <div key={project._id}>
-            <h3>{project.title}</h3>
+          <div key={project._id} className="border p-4 mb-4">
+            <h3 className="text-xl font-bold">{project.title}</h3>
             <p>{project.description}</p>
             <p>Status: {project.status}</p>
-            <button onClick={() => setEditProject(project)}>Edit</button>
-            <button onClick={() => handleDeleteProject(project._id)}>Delete</button>
+            <button
+              onClick={() => setEditProject(project)}
+              className="bg-yellow-500 text-white p-2 rounded mr-2"
+            >
+              Edit
+            </button>
+            <button
+              onClick={() => handleDeleteProject(project._id)}
+              className="bg-red-500 text-white p-2 rounded"
+            >
+              Delete
+            </button>
           </div>
         ))}
       </div>
       {editProject && (
-        <div>
-          <h3>Edit Project</h3>
+        <div className="mt-6">
+          <h3 className="text-xl font-semibold mb-2">Edit Project</h3>
           <input
             type="text"
             placeholder="Title"
             value={editProject.title}
             onChange={(e) => setEditProject({ ...editProject, title: e.target.value })}
+            className="border p-2 mb-2 w-full"
           />
           <input
             type="text"
             placeholder="Description"
             value={editProject.description}
             onChange={(e) => setEditProject({ ...editProject, description: e.target.value })}
+            className="border p-2 mb-2 w-full"
           />
           <input
             type="text"
             placeholder="Status"
             value={editProject.status}
             onChange={(e) => setEditProject({ ...editProject, status: e.target.value })}
+            className="border p-2 mb-2 w-full"
           />
-          <button onClick={() => handleUpdateProject(editProject._id)}>Update</button>
+          <button
+            onClick={() => handleUpdateProject(editProject._id)}
+            className="bg-green-500 text-white p-2 rounded"
+          >
+            Update
+          </button>
         </div>
       )}
     </div>
