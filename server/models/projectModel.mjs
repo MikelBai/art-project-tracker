@@ -1,4 +1,4 @@
-import { Schema, model, Document } from 'mongoose';
+import { Schema, model } from 'mongoose';
 
 const projectSchema = new Schema({
     title: {
@@ -16,13 +16,6 @@ const projectSchema = new Schema({
 });
 
 
-interface IProject extends Document {
-    title: string;
-    description: string;
-    status: string;
-}
-
-
-const ProjectModel = model<IProject>('Project', projectSchema);
+const ProjectModel = model('Project', projectSchema);
 
 export default ProjectModel;

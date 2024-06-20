@@ -1,7 +1,15 @@
-import React from "react";
+import React from 'react';
+import { useParams } from 'react-router-dom';
 
-function Project() {
-    return <h1>Project Page</h1>
-}
+const Project = () => {
+  const { id } = useParams<{ id: string }>();
 
-export default Project
+  return (
+    <div>
+      <h1>Project {id}</h1>
+      {/* Fetch and display project details based on id */}
+    </div>
+  );
+};
+
+export default Project;
