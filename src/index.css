@@ -76,3 +76,17 @@ button:focus-visible {
     background-color: var(--primary-color);
   }
 }
+
+.sidebar {
+  width: 256px;
+  background-color: #1a202c; /* Dark gray */
+  color: white;
+  height: 100vh;
+  position: fixed;
+}
+
+.header {
+  background-color: #4299e1; /* Blue */
+  color: white;
+  padding: 1rem;
+}
